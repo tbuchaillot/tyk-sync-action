@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	myInput := githubactions.GetInput("INPUT_MYINPUT")
+	myInput := githubactions.GetInput("myInput")
 	output := fmt.Sprintf("Hello %s", myInput)
 	err := listFiles()
 	check(err)
@@ -25,7 +25,7 @@ func check(e error) {
 func listFiles()  error {
 	action := githubactions.New()
 	return filepath.Walk(".", func(path string, f os.FileInfo, err error) error {
-		action.Infof("found file:",path)
+		action.Infof("found file: %s",path)
 		return nil
 	})
 
